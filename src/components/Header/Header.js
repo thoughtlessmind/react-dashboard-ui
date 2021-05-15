@@ -2,16 +2,24 @@ import { Avatar, IconButton, makeStyles } from '@material-ui/core'
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
 import { Link } from 'react-router-dom'
 import { FullscreenRounded, SettingsOutlined } from '@material-ui/icons'
+import { useDispatch } from 'react-redux'
+import { toggleSideDrawer } from 'thunks/genral/actions'
 
 const companyLogo =
   'https://demo.jsnorm.com/react/strikingdash/static/media/Logo_Dark.9ef25a33.svg'
 
 const Header = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+  
+  const handleToggleSideDrawer = () =>{
+    dispatch(toggleSideDrawer())
+  }
+
   return (
     <div className={classes.haderContainer}>
       <div className="flex items-center gap-1 ml-2">
-        <IconButton>
+        <IconButton onClick={handleToggleSideDrawer}>
           <MenuRoundedIcon />
         </IconButton>
         <Link className="w-32 flex items-center justify-center">
