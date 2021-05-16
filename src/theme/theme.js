@@ -1,6 +1,9 @@
 const { createMuiTheme } = require('@material-ui/core')
 
 const theme = createMuiTheme({
+  typography:{
+    fontFamily:`'Inter', sans-serif`
+  },
   props: {
     MuiButton: {
       disableElevation: true
