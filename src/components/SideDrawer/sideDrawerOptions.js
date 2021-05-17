@@ -21,8 +21,8 @@ const sideDrawerOptions = {
           to: 'light-mode'
         },
         {
-          name: 'Light Mode',
-          to: 'light-mode'
+          name: 'Dark Mode',
+          to: 'dark-mode'
         }
       ]
     }

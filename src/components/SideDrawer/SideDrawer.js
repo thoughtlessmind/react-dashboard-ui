@@ -168,21 +168,24 @@ const IconsSideBar = () => {
   const classes = useIconsSidebarStyles()
   const [popverData, setPopverData] = useState({
     open: false,
-    anchorEl: null
+    anchorEl: null,
+    subOptions: []
   })
 
-  const handleOpenPopver = (e) => {
+  const handleOpenPopver = (e, subOptions) => {
     console.log(e.currentTarget)
     setPopverData({
       open: true,
-      anchorEl: e.currentTarget
+      anchorEl: e.currentTarget,
+      subOptions: subOptions
     })
   }
 
   const handleClosePopver = () => {
     setPopverData({
       open: false,
-      anchorEl: null
+      anchorEl: null,
+      subOptions: []
     })
   }
 
@@ -192,7 +195,7 @@ const IconsSideBar = () => {
         {sideDrawerOptions.mainMenu.map((option) => (
           <div
             // onMouseLeave={handleClosePopver}
-            onMouseEnter={handleOpenPopver}
+            onMouseEnter={(e) => handleOpenPopver(e, option.subOptions)}
             className={classes.iconButton}
           >
             <option.icon />
@@ -220,10 +223,9 @@ const IconsSideBar = () => {
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <div className={classes.popverContainer}>
-              <a>Link 1</a>
-              <a>Link 1</a>
-              <a>Link 1</a>
-              <a>Link 1</a>
+              {popverData.subOptions.map((i) => (
+                <NavLink to={i.to}>{i.name}</NavLink>
+              ))}
             </div>
           </Fade>
         )}
@@ -256,28 +258,28 @@ const useIconsSidebarStyles = makeStyles((theme) => ({
       }
     }
   },
-  popverContainer:{
-    backgroundColor:'#fff',
-    padding: theme.spacing(1,0),
-    borderRadius:theme.shape.borderRadius,
-    width:160,
-    minWidth:160,
-    maxHeight:`calc(100vh - 100px)`,
-    maxWidth:180,
-    boxShadow:'0 2px 8px rgb(0 0 0 / 5%)',
-    display:'flex',
-    justifyContent:'center',
-    flexDirection:'column',
-    '&>a':{
-      color:'#5a5f7d',
-      cursor:'pointer',
-      fontSize:14,
-      height:theme.spacing(5),
-      padding: theme.spacing(0,2),
-      display:'flex',
-      alignItems:'center',
-      '&:hover, &:active':{
-        backgroundColor:'#f0f3ff'
+  popverContainer: {
+    backgroundColor: '#fff',
+    padding: theme.spacing(1, 0),
+    borderRadius: theme.shape.borderRadius,
+    width: 160,
+    minWidth: 160,
+    maxHeight: `calc(100vh - 100px)`,
+    maxWidth: 180,
+    boxShadow: '0 2px 8px rgb(0 0 0 / 5%)',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    '&>a': {
+      color: '#5a5f7d',
+      cursor: 'pointer',
+      fontSize: 14,
+      height: theme.spacing(5),
+      padding: theme.spacing(0, 2),
+      display: 'flex',
+      alignItems: 'center',
+      '&:hover, &:active, &.active': {
+        backgroundColor: '#f0f3ff'
       }
     }
   }
