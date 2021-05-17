@@ -290,6 +290,7 @@ const useStyles = makeStyles((theme) => ({
     padding: ({ sideDrawerOpen }) => (sideDrawerOpen ? theme.spacing(2) : 0),
     paddingBottom: theme.spacing(7),
     overflowX: 'hidden',
+    zIndex:10,
     width: ({ sideDrawerOpen }) =>
       sideDrawerOpen
         ? theme.custom.sideDrawer.width.open

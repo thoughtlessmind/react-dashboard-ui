@@ -47,7 +47,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2),
     boxShadow: 'rgb(146 153 184 / 6%) 0px 2px 30px',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    position:'fixed',
+    top:0,
+    left:0,
+
   },
   avatarRoot: {
     width: 32,

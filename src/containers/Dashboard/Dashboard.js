@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     width: '100vw',
+    marginTop: theme.custom.header.height,
     height: `calc(100vh - ${theme.custom.header.height}px )`,
     backgroundColor: 'rgb(244, 245, 247)'
   },
